@@ -11,11 +11,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-.square {
-  height: 200px;
-  width: 200px;
-  background: red;
-  display: flex;
-  justify-content: center;
-}

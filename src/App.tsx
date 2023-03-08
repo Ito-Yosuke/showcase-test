@@ -1,26 +1,28 @@
-import type { Component } from 'solid-js';
+import type { Component } from "solid-js";
+import { lazy } from "solid-js";
+import { Router, Routes, Route, Link } from "solid-app-router";
+import styles from "./App.module.css";
 
-import logo from './logo.svg';
-import styles from './App.module.css';
+const IndexPage = lazy(() => import("./pages/Index"));
+const CatsPage = lazy(() => import("./pages/Cats"));
+const CounterPage = lazy(() => import("./pages/Counter"));
 
 const App: Component = () => {
   return (
-    <div class={styles.App}>
-      <header class={styles.header}>
-        <img src={logo} class={styles.logo} alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          class={styles.link}
-          href="https://github.com/solidjs/solid"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Solid
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div class={styles.App}>
+        <div class={styles.nav}>    
+          <Link href="/counter">Bubble</Link>
+        </div>
+        <div class={styles.nav}>
+          <Link href="/">Page2</Link>
+        </div>
+        <Routes>
+          <Route path="/" element={<IndexPage />} />
+          <Route path="/counter" element={<CounterPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 
